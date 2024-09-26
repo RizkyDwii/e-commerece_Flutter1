@@ -122,8 +122,8 @@ class ItemsWidget extends StatelessWidget {
   List<String> myProductName = [
     'Sepatu Formal',
     'Sepatu Sekolah',
-    'Seragam Sneakers',
-    'Seragam Sport',
+    'Kaos polos',
+    'Smart TV',
   ];
 
   @override
