@@ -141,7 +141,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-   Widget _buildLogoutButton(BuildContext context) {
+  Widget _buildLogoutButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
         showDialog(

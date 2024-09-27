@@ -49,7 +49,7 @@ class ItemPage extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Sepatu',
+                            'Smart TV',
                             style: TextStyle(
                               fontSize: 28,
                               color: Color(0xFF2D446C),

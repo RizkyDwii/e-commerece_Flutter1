@@ -8,10 +8,14 @@ class Chatpage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF252C7B),
+        iconTheme: const IconThemeData(
+          color: Colors.white, 
+        ),
         title:  const Text('LitMall Chat',style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: Color.fromARGB(255, 255, 255, 255),
                   ),),
         actions: [
           IconButton(

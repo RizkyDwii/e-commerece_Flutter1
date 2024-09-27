@@ -36,7 +36,7 @@ class _HomepageState extends State<Homepage> {
           });
         },
         height: 70,
-        color: Color.fromARGB(255, 37, 44, 123),
+        color: Color(0xFF252C7B),
         items: const [
           Icon(
             Icons.home,

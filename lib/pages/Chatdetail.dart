@@ -40,6 +40,7 @@ class _ChatdetailState extends State<Chatdetail> {
   ];
 
   final TextEditingController _controller = TextEditingController();
+  final ScrollController _scrollController = ScrollController(); 
 
   @override
   Widget build(BuildContext context) {
@@ -51,27 +52,31 @@ class _ChatdetailState extends State<Chatdetail> {
             Navigator.pop(context); 
           },
         ),
-        title: Text(widget.contactName), 
+        title: Text(widget.contactName),
       ),
       body: Column(
         children: [
           Expanded(
             child: ListView.builder(
+              controller: _scrollController, 
               padding: const EdgeInsets.all(16.0),
               itemCount: _messages.length,
               itemBuilder: (context, index) {
                 final message = _messages[index];
-                return Align(
-                  alignment: message['isSender'] == 'true'
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-                  child: _buildChatBubble(
-                    message: message['message']!,
-                    isSender: message['isSender'] == 'true',
-                    time: message['time']!,
-                    avatarUrl: message['isSender'] == 'true'
-                        ? null
-                        : 'https://randomuser.me/api/portraits/men/12.jpg',
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Align(
+                    alignment: message['isSender'] == 'true'
+                        ? Alignment.centerRight
+                        : Alignment.centerLeft,
+                    child: _buildChatBubble(
+                      message: message['message']!,
+                      isSender: message['isSender'] == 'true',
+                      time: message['time']!,
+                      avatarUrl: message['isSender'] == 'true'
+                          ? null
+                          : 'https://randomuser.me/api/portraits/men/12.jpg',
+                    ),
                   ),
                 );
               },
@@ -159,6 +164,7 @@ class _ChatdetailState extends State<Chatdetail> {
                     'time': TimeOfDay.now().format(context),
                     'isSender': 'true',
                   });
+                  _scrollToBottom();
                 });
                 controller.clear();
               }
@@ -166,6 +172,14 @@ class _ChatdetailState extends State<Chatdetail> {
           ),
         ],
       ),
+    );
+  }
+
+  void _scrollToBottom() {
+    _scrollController.animateTo(
+      _scrollController.position.maxScrollExtent,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
     );
   }
 }
